@@ -1,0 +1,33 @@
+.navigation-bar {
+    width: 100%;
+    height: 64px;
+    background-color: white;
+
+    box-sizing: border-box;
+    padding: 20px 85px;
+
+    display: flex;
+    flex-flow: row;
+}
+
+.route {
+    text-decoration: none;
+    color: inherit;
+}
+
+.first {
+    font-weight: 400;
+    color: gray;
+    cursor: pointer;
+}
+
+.last {
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.slash {
+    margin-right: 3px;
+    color: aqua;
+}

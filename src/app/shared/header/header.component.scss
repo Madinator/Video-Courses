@@ -1,0 +1,38 @@
+.footer {
+	position: fixed;
+	top: 0;
+}
+
+.logo {
+	width: 28px;
+	height: 28px;
+}
+
+.title {
+	font-size: 18px;
+	font-weight: 700;
+	color: white;
+}
+
+.actions {
+	display: flex;
+	flex-flow: row;
+	gap: 24px;
+	color: white;
+	font-size: 14px;
+}
+
+.action {
+	display: flex;
+	flex-flow: row;
+	gap: 8px;
+	align-items: center;
+	cursor: pointer;
+}
+
+.row {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	gap: 12px;
+}

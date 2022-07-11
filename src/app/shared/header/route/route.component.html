@@ -1,0 +1,7 @@
+<div class="navigation-bar">
+    <div class="path" class="n" *ngFor="let route of routerPath; 
+        let first = first; let last = last; let even = even; let odd = odd" 
+        [ngClass]="{ odd: odd, even: even, first: first, last: last}">
+       <a class="route" href="{{'/' + route.route}}"> {{ route.name }} </a> <span *ngIf="!last" class="slash">/</span>
+    </div>
+</div>

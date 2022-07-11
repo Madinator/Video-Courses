@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="header">
+        <h1 class="title">{{data?.title}}</h1>
+        <div class="time">
+            <div>
+                <img src="../../../../../../assets/clock.svg" alt="">
+                <p>{{data?.duration}}</p>
+            </div>
+            <div>
+                <img src="../../../../../../assets/calendar.svg" alt="">
+                <time class="date">{{data?.creationDate}}</time>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p class="text">{{data?.description}}</p>
+        <div class="actions">
+            <app-base-button imgSrc="../../../../../assets/edit.svg" class="edit" name="edit"></app-base-button>
+            <app-base-button imgSrc="../../../../../assets/delete.svg" class="delete" name="delete"></app-base-button>
+        </div>
+    </div>
+</div>
+
+<div class="loadMore" *ngIf="last">
+    <a class="loadMore-button">Load more</a>
+</div>

@@ -1,0 +1,36 @@
+@use 'reset';
+
+body {
+    background: #F8F8F8;
+}
+
+.layout {
+    background: #303240;
+	height: 60px;
+	width: 100%;
+
+	box-sizing: border-box;
+	padding: 16px 85px;
+
+    &__container {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.base--input {
+    border-radius: 3px;
+	border: 1px solid #CED0DB;
+    border-color: #ced0db;
+}
+
+.active--button {
+    border-radius: 3px;
+    border: none;
+    background: #67A300;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
