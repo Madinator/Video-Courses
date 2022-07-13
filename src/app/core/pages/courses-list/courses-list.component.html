@@ -1,14 +1,17 @@
 <app-header></app-header>
 <div class="container">
     <div class="search-form">
-        <input class="search-input base--input" placeholder="Type to search">
+        <input class="search-input base--input" placeholder="Type to search" [(ngModel)]="searchText" alt="">
         <button class="search-button active--button">Search</button>
     </div>
     <div class="base-button">
         <app-base-button imgSrc="../../../../../assets/add.png" name="Add course"></app-base-button>
     </div>
     <div class="list">
-        <app-card *ngFor="let number of [1, 2, 3]; let last = last" [data]="data" [last]="last"></app-card>
+        <app-card *ngFor="let card of data; trackBy: trackCoursesById; 
+            let last = last" [data]="card" [last]="last" 
+            (delete)="deleteCard($event)">
+        </app-card>
     </div>
 </div>
 <app-footer></app-footer>
