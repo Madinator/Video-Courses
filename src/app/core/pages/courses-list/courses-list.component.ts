@@ -1,9 +1,15 @@
+import { SharedModule } from './../../../shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { ComponentsModule } from './../../components/components.module';
+import { CardComponent } from './card/card.component';
+import { Card } from './../../models/courses';
 import { Component, OnInit } from '@angular/core';
-import { Card } from '../../models/courses';
 
 @Component({
   templateUrl: './courses-list.component.html',
-  styleUrls: ['./courses-list.component.scss']
+  styleUrls: ['./courses-list.component.scss'],
+  standalone: true,
+  imports: [ CommonModule, ComponentsModule, CardComponent, SharedModule ]
 })
 export class CoursesListComponent implements OnInit {
   public data: Card = {
