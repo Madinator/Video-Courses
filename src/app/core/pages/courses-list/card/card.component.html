@@ -16,11 +16,16 @@
         <p class="text">{{data?.description}}</p>
         <div class="actions">
             <app-base-button imgSrc="../../../../../assets/edit.svg" class="edit" name="edit"></app-base-button>
-            <app-base-button imgSrc="../../../../../assets/delete.svg" class="delete" name="delete"></app-base-button>
+            <app-base-button 
+                imgSrc="../../../../../assets/delete.svg" 
+                class="delete" 
+                name="delete"
+                (click)="delete(data.id)">
+            </app-base-button>
         </div>
     </div>
 </div>
 
 <div class="loadMore" *ngIf="last">
-    <a class="loadMore-button">Load more</a>
+    <a class="loadMore-button" (click)="LoadMore()">Load more</a>
 </div>
