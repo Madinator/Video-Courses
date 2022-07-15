@@ -1,3 +1,5 @@
+import { CreationDateDirective } from 'app/core/directives/creation-date.directive';
+import { DurationPipe } from './../../../pipes/duration.pipe';
 import { Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComponentsModule } from './../../../components/components.module';
@@ -9,7 +11,7 @@ import { Card } from '../../../models/courses';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   standalone: true,
-  imports: [ CommonModule, ComponentsModule ]
+  imports: [ CommonModule, ComponentsModule, DurationPipe, CreationDateDirective ],
 })
 export class CardComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
   @Input() data: Card;

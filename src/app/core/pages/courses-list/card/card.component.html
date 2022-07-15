@@ -1,14 +1,17 @@
-<div class="card">
+<div class="card" appCreationDate [creationDate]="data.creationDate">
     <div class="header">
-        <h1 class="title">{{data?.title}}</h1>
+        <div class="row">
+            <h1 class="title">{{data?.title | uppercase}}</h1>
+            <img [ngClass]="data.topRated ? 'visible' : 'hidden'" class="star" src="../../../../../assets/star.svg" alt="">
+        </div>
         <div class="time">
             <div>
                 <img src="../../../../../../assets/clock.svg" alt="">
-                <p>{{data?.duration}}</p>
+                <p>{{data.duration | duration}}</p>
             </div>
             <div>
                 <img src="../../../../../../assets/calendar.svg" alt="">
-                <time class="date">{{data?.creationDate}}</time>
+                <time class="date">{{data?.creationDate | date: 'dd/MM/yyyy'}}</time>
             </div>
         </div>
     </div>
