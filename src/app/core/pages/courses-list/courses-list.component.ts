@@ -1,18 +1,10 @@
-import { FilterPipe } from './../../pipes/filter.pipe';
-import { OrderByPipe } from './../../pipes/order-by.pipe';
-import { SharedModule } from './../../../shared/shared.module';
-import { CommonModule } from '@angular/common';
-import { ComponentsModule } from './../../components/components.module';
-import { CardComponent } from './card/card.component';
-import { Card } from './../../models/courses';
+import { Card } from 'app/core/models/courses';
 import { Component, OnInit, TrackByFunction } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FilterPipe } from 'app/core/pipes/filter.pipe';
 
 @Component({
   templateUrl: './courses-list.component.html',
-  styleUrls: ['./courses-list.component.scss'],
-  standalone: true,
-  imports: [CommonModule, ComponentsModule, CardComponent, SharedModule, FormsModule, OrderByPipe]
+  styleUrls: ['./courses-list.component.scss'],  
 })
 export class CoursesListComponent implements OnInit  {
   public searchText: string;

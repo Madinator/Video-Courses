@@ -1,6 +1,5 @@
 import { Card } from './../models/courses';
 import { Pipe, PipeTransform } from '@angular/core';
-import { filter } from 'lodash';
 
 @Pipe({
   name: 'filter',

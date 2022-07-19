@@ -1,22 +1,19 @@
-import { LoginComponent } from './pages/login/login.component';
-import { CoursesListComponent } from './pages/courses-list/courses-list.component';
+import { LoginModule } from './pages/login/login.module';
+import { CoursesListModule } from './pages/courses-list/courses-list.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FilterPipe } from './pipes/filter.pipe';
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [  
   ],
   imports: [
     CommonModule,
-    LoginComponent,
-    CoursesListComponent
   ],
   exports: [
-    CoursesListComponent,
-    LoginComponent, 
+    CoursesListModule,
+    LoginModule
   ]
 })
 export class CoreModule { }

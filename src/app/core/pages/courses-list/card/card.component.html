@@ -2,15 +2,15 @@
     <div class="header">
         <div class="row">
             <h1 class="title">{{data?.title | uppercase}}</h1>
-            <img [ngClass]="data.topRated ? 'visible' : 'hidden'" class="star" src="../../../../../assets/star.svg" alt="">
+            <img [ngClass]="data.topRated ? 'visible' : 'hidden'" class="star" src="assets/star.svg" alt="">
         </div>
         <div class="time">
             <div>
-                <img src="../../../../../../assets/clock.svg" alt="">
+                <img src="assets/clock.svg" alt="">
                 <p>{{data.duration | duration}}</p>
             </div>
             <div>
-                <img src="../../../../../../assets/calendar.svg" alt="">
+                <img src="assets/calendar.svg" alt="">
                 <time class="date">{{data?.creationDate | date: 'dd/MM/yyyy'}}</time>
             </div>
         </div>
@@ -18,9 +18,9 @@
     <div class="footer">
         <p class="text">{{data?.description}}</p>
         <div class="actions">
-            <app-base-button imgSrc="../../../../../assets/edit.svg" class="edit" name="edit"></app-base-button>
+            <app-base-button imgSrc="assets/edit.svg" class="edit" name="edit"></app-base-button>
             <app-base-button 
-                imgSrc="../../../../../assets/delete.svg" 
+                imgSrc="assets/delete.svg" 
                 class="delete" 
                 name="delete"
                 (click)="delete(data.id)">

@@ -6,7 +6,6 @@ import { orderBy } from 'lodash';
 
 @Pipe({
   name: 'orderBy',
-  standalone: true,
 })
 export class OrderByPipe implements PipeTransform {
 

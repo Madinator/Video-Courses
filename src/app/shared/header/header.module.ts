@@ -1,4 +1,5 @@
-import { RouteComponent } from './../../core/public/components/route/route.component';
+import { HeaderComponent } from './header.component';
+import { RouteComponent } from './route/route.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -6,10 +7,14 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    RouteComponent
+    RouteComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    HeaderComponent
   ]
 })
 export class HeaderModule { }

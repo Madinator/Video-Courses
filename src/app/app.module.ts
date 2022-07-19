@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreationDateDirective } from './core/directives/creation-date.directive';
+import { CoursesListModule } from './core/pages/courses-list/courses-list.module';
 
 
 @NgModule({
@@ -19,6 +19,7 @@ import { CreationDateDirective } from './core/directives/creation-date.directive
     AppRoutingModule,
     CoreModule,
     SharedModule,
+    CoursesListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
