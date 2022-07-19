@@ -1,3 +1,4 @@
+import { DeleteCardModule } from './delete-card/delete-card.module';
 import { CardComponent } from './card.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,11 +12,12 @@ import { DurationPipe } from 'app/core/pipes/duration.pipe';
   declarations: [
     CardComponent,
     DurationPipe,
-    CreationDateDirective
+    CreationDateDirective,
   ],
   imports: [ 
     CommonModule, 
     ComponentsModule, 
+    DeleteCardModule
   ],
   exports: [
     CardComponent

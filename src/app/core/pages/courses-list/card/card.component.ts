@@ -11,6 +11,8 @@ export class CardComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
   @Input() last: boolean;
   @Output('delete') deleteEvent = new EventEmitter<number>();
 
+  public isDeleteModalVisible: boolean = false;
+
   constructor() { }
 
   ngOnChanges(): void {
@@ -49,8 +51,15 @@ export class CardComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
     console.log('Load More button is clicked!')
   }
 
-  public delete(id: number): void {
-    this.deleteEvent.emit(id);
+  public showDeleteModal(): void {
+    this.isDeleteModalVisible = true;
+  }
+  public hideDeleteModal(): void {
+    this.isDeleteModalVisible = false;
+  }
+
+  public delete(id: number) {
+    this.deleteEvent.emit(id)
   }
 
 }

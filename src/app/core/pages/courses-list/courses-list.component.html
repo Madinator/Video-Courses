@@ -15,7 +15,7 @@
     <div class="list" *ngIf="data.length > 0; else noData">
         <app-card *ngFor="let card of data | orderBy: 'creationDate' : 'desc'; trackBy: trackCoursesById; 
             let last = last" [data]="card" [last]="last" 
-            (delete)="deleteCard($event)"
+            (delete)="deleteCourse($event)"
             >
         </app-card>
     </div>

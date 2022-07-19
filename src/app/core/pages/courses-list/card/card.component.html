@@ -23,7 +23,7 @@
                 imgSrc="assets/delete.svg" 
                 class="delete" 
                 name="delete"
-                (click)="delete(data.id)">
+                (click)="showDeleteModal()">
             </app-base-button>
         </div>
     </div>
@@ -32,3 +32,8 @@
 <div class="loadMore" *ngIf="last">
     <a class="loadMore-button" (click)="LoadMore()">Load more</a>
 </div>
+
+<app-modal *ngIf="isDeleteModalVisible">
+    <app-delete-card (close)="hideDeleteModal()" [data]="data" (delete)="delete($event)"></app-delete-card>
+</app-modal>
+
