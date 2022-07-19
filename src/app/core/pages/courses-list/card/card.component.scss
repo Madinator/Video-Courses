@@ -10,6 +10,14 @@
     gap: 8px;
 }
 
+.row {
+    display: flex;
+    flex-flow: row;
+}
+.star {
+    margin-top: -4px;
+}
+
 .header {
     display: flex;
     flex-flow: row;
@@ -90,3 +98,4 @@
     color: #5681EE;
 	font-size: 12px;
 }
+

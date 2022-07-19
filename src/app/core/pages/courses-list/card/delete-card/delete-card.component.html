@@ -1,0 +1,14 @@
+<div class="container">
+    <header class="header">
+        <strong class="title">Delete Course?</strong>
+        <img class="close" src="assets/close.svg" (click)="close()" alt="">
+    </header>
+    <main class="main">
+        <span class="ask">Are you sure you want to delete</span>
+        <span class="name"> {{ data.title }} </span>
+    </main>
+    <footer class="footer">
+        <button class="reject--button" (click)="close()">Cancel</button>
+        <button class="delete active--button" (click)="delete(data.id)">Yes,delete</button>
+    </footer>
+</div>
