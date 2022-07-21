@@ -1,0 +1,96 @@
+.container {
+    border-radius: 6px;
+    background: #FFFFFF;
+    box-shadow: 0 1px 2px 0 rgba(29,30,38,0.10), 0 2px 10px 0 rgba(29,30,38,0.15);
+    
+    margin-top: 24px;
+    padding: 24px 24px 32px 24px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+
+    width: fit-content;
+    height: fit-content;
+}
+
+.title {
+    color: #333333;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.content {
+    display: flex;
+    flex-flow: column;
+    gap: 12px;
+}
+
+.row-justify-between {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.title-container {
+    margin-top: 24px;
+}
+
+.name-input {
+    height: 36px;
+    width: 680px;
+}
+
+.input-style {
+    margin-top: 8px;
+    border-radius: 3px;
+    border: 1px solid #CED0DB;
+    background: #FFFFFF;
+    border-color: #ced0db;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.block-name {
+    color: #474A59;
+	font-size: 14px;
+    font-weight: 600;
+}
+
+.required {
+    color: #474A59;
+    font-size: 12px;
+}
+
+.description-input {
+    height: 108px;
+    width: 680px;
+}
+
+.small-block {
+    width: 150px;
+}
+.duration-input {
+    height: 35px;
+    width: 150px;
+}
+
+.row {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.minutes {
+	color: #474A59;
+	font-size: 14px;
+}
+
+.buttons {
+    justify-content: flex-end;
+}
+
+.button {
+    padding: 8px 18px;
+}
+
+

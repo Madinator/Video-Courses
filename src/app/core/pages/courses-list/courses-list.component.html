@@ -1,5 +1,3 @@
-<app-header></app-header>
-
 <div class="container">
     <div class="search-form">
         <input class="search-input base--input" 
@@ -10,7 +8,7 @@
         <button class="search-button active--button">Search</button>
     </div>
     <div class="base-button">
-        <app-base-button imgSrc="assets/add.png" name="Add course"></app-base-button>
+        <app-base-button imgSrc="assets/add.png" name="Add course" [routerLink]="['/TestForNow']"></app-base-button>
     </div>
     <div class="list" *ngIf="data.length > 0; else noData">
         <app-card *ngFor="let card of data | orderBy: 'creationDate' : 'desc'; trackBy: trackCoursesById; 
@@ -24,4 +22,3 @@
     </ng-template>
 
 </div>
-<app-footer></app-footer>

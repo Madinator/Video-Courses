@@ -6,6 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DurationPipe implements PipeTransform {
 
   transform(minutes: number): string {
+    if(!minutes) {
+      return "";
+    }
     if( minutes < 60 ) {
       return minutes + ' min';
     }

@@ -5,8 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadComponent: () => import('app/core/pages/login/login.module').then(m => m.LoginModule) },
-  { path: 'Courses', loadComponent: () => import('app/core/pages/courses-list/courses-list.module').then(m => m.CoursesListModule) },
-  { path: 'New-Course', loadComponent: () => import('app/core/pages/courses-list/add-edit/add-edit.component').then(m => m.AddEditComponent) },
+  { path: 'Courses', loadChildren: () => import('app/core/pages/courses-list/courses-list.module').then(m => m.CoursesListModule)},
+  { path: 'TestForNow', loadChildren: () => import('app/core/pages/courses-list/add-edit/add-edit.module').then(m => m.AddEditModule)},
   { path: '**', loadComponent: () => import('app/core/pages/login/login.module').then(m => m.LoginModule) }
 ]
 

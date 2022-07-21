@@ -1,12 +1,13 @@
 import { Card } from 'app/core/models/courses';
-import { Component, OnInit, TrackByFunction } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, TrackByFunction } from '@angular/core';
 import { FilterPipe } from 'app/core/pipes/filter.pipe';
 
 import { CourseService } from 'app/core/services/course.service';
 
 @Component({
   templateUrl: './courses-list.component.html',
-  styleUrls: ['./courses-list.component.scss'],  
+  styleUrls: ['./courses-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,  
 })
 export class CoursesListComponent implements OnInit  {
   public searchText: string;

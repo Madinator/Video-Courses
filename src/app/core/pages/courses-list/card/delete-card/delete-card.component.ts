@@ -1,10 +1,11 @@
 import { Card } from 'app/core/models/courses';
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-delete-card',
   templateUrl: './delete-card.component.html',
-  styleUrls: ['./delete-card.component.scss']
+  styleUrls: ['./delete-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeleteCardComponent implements OnInit {
   @Input() data: Card;

@@ -1,4 +1,54 @@
-<div class="container">
-    <div class="upper"></div>
-    <div class="bottom"></div>
+<div class="container ">
+    <h1 class="title">New Course</h1>
+    <div class="content">
+        <div class="title-container">
+            <div class="row-justify-between">
+                <label class="block-name">Title:</label>
+                <span class="required">* required</span>
+            </div>
+            <input class="name-input input-style" 
+                    placeholder="Text input" alt=""
+                    [(ngModel)]="title"
+            >
+        </div>
+        <div>
+            <div class="row-justify-between">
+                <label class="block-name">Description:</label>
+                <span class="required">* required</span>
+            </div>
+            <textarea  class="description-input input-style" 
+                       placeholder="Add description" alt=""
+                       [(ngModel)]="description"
+            ></textarea>
+        </div>
+        <div>
+            <div class="small-block row-justify-between">
+                <label class="block-name">Date:</label>
+                <span class="required">* required</span>
+            </div>
+            <div class="row">
+                <input  class="small-block input-style" 
+                        placeholder="minutes" alt=""
+                        type="date" 
+                        [(ngModel)]="creationDate"> 
+            </div>
+        </div>
+        <div>
+            <div class="small-block row-justify-between">
+                <label class="block-name">Duration:</label>
+                <span class="required">* required</span>
+            </div>
+            <div class="row">
+                <input  class="duration-input input-style" 
+                        placeholder="minutes" alt=""
+                        type="number" 
+                        [(ngModel)]="duration"> 
+                <span class="minutes">{{ duration | duration}}</span>
+            </div>
+        </div>
+        <div class="row buttons">
+            <button class="button secondary--button">Cancel</button>
+            <button class="button active--button" (click)="save()">Save</button>
+        </div>
+    </div>
 </div>

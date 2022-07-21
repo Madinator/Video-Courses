@@ -1,19 +1,21 @@
-<div class="layout header">
-    <div class="layout__container">
-        <div class="row">
-            <img class="logo" src="assets/icons8-video-24.png" alt="video course"/>
-            <h1 class="title">VIDEO COURSE</h1>
-        </div>
-        <div class="actions">
-            <div class="action">
-                <img src="assets/user.svg" alt="">
-                <label>User login</label>  
+<div appIfAuthenticated>
+    <div class="layout header">
+        <div class="layout__container">
+            <div class="row">
+                <img class="logo" src="assets/icons8-video-24.png" alt="video course"/>
+                <h1 class="title">VIDEO COURSE</h1>
             </div>
-            <div class="action" (click)="logout()">
-                <img src="assets/logout.svg" alt="">
-                <label>Log out</label>  
+            <div class="actions">
+                <div class="action">
+                    <img src="assets/user.svg" alt="">
+                    <label>User login</label>  
+                </div>
+                <div class="action" (click)="logout()">
+                    <img src="assets/logout.svg" alt="">
+                    <label>Log out</label>  
+                </div>
             </div>
         </div>
     </div>
+    <app-route></app-route>
 </div>
-<app-route appIfAuthenticated></app-route>
