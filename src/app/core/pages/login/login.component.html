@@ -4,14 +4,20 @@
         <label class="label" for="email">Email:</label>
         <p class="required">required:</p>
     </div>
-    <input id="email" class="input base--input mt-smt" />
+    <input id="email" 
+        class="input base--input mt-smt" 
+        [(ngModel)]="email" 
+        />
     <div class="row mt-sm">
         <label class="label" for="password">Password:</label>
         <p class="required">required:</p>
     </div>
-    <input id="password" class="input base--input mt-smt" type="password"/>
+    <input id="password" 
+        class="input base--input mt-smt" type="password" 
+        [(ngModel)]="password"
+        />
     <div class="row mt-ave">
         <a class="forgot">Forgot Password?</a>
-        <button class="confirm active--button" routerLink="/Courses">Login</button>
+        <button class="confirm active--button" (click)="login()">Login</button>
     </div>
 </div>

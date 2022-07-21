@@ -1,27 +1,33 @@
-import { SharedModule } from './../../../shared/shared.module';
-import { CommonModule } from '@angular/common';
-import { ComponentsModule } from './../../components/components.module';
-import { CardComponent } from './card/card.component';
-import { Card } from './../../models/courses';
-import { Component, OnInit } from '@angular/core';
+import { Card } from 'app/core/models/courses';
+import { ChangeDetectionStrategy, Component, OnInit, TrackByFunction } from '@angular/core';
+import { FilterPipe } from 'app/core/pipes/filter.pipe';
+
+import { CourseService } from 'app/core/services/course.service';
 
 @Component({
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss'],
-  standalone: true,
-  imports: [ CommonModule, ComponentsModule, CardComponent, SharedModule ]
+  changeDetection: ChangeDetectionStrategy.OnPush,  
 })
-export class CoursesListComponent implements OnInit {
-  public data: Card = {
-    id: 1,
-    title: 'Video Course 1. Name tag',
-    creationDate: '08/28/2020',
-    duration: '1h 28 min',
-    description: 'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or colleges classes. Theyre published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.'
-  }
-  constructor() { }
+export class CoursesListComponent implements OnInit  {
+  public searchText: string;
+  public data: Card[];
+
+  constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {
+    this.data = this.courseService.getList();
   }
 
+  public deleteCourse(id: number): void {
+    this.courseService.remove(id);
+    this.data = this.courseService.getList();
+  }
+
+  
+  public trackCoursesById: TrackByFunction<Card> = (index: number, item: Card) => item.id;
+
+  public filterByName(): void {
+    this.data = (new FilterPipe).transform(this.courseService.getList(), this.searchText)
+  }
 }
