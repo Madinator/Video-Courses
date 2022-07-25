@@ -18,7 +18,12 @@
     <div class="footer">
         <p class="text">{{data?.description}}</p>
         <div class="actions">
-            <app-base-button imgSrc="assets/edit.svg" class="edit" name="edit"></app-base-button>
+            <app-base-button 
+                imgSrc="assets/edit.svg" 
+                class="edit" 
+                name="edit"
+                [routerLink]="['/courses/' + data?.id]">
+            </app-base-button>
             <app-base-button 
                 imgSrc="assets/delete.svg" 
                 class="delete" 

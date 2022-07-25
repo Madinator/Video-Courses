@@ -1,5 +1,5 @@
+import { CoursesModule } from './pages/courses/courses.module';
 import { LoginModule } from './pages/login/login.module';
-import { CoursesListModule } from './pages/courses-list/courses-list.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,8 +12,8 @@ import { CommonModule } from '@angular/common';
     CommonModule,
   ],
   exports: [
-    CoursesListModule,
-    LoginModule
+    LoginModule,
+    CoursesModule
   ]
 })
 export class CoreModule { }

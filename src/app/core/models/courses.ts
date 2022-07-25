@@ -6,3 +6,8 @@ export interface Card {
     description: string,
     topRated: boolean,
 }
+
+export enum CourseActionType {
+    Add = 'ADD',
+    Edit = 'Edit'
+}

@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoursesListModule } from './core/pages/courses-list/courses-list.module';
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { CoursesListModule } from './core/pages/courses-list/courses-list.module
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    CoursesListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

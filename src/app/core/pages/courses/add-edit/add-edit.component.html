@@ -30,7 +30,7 @@
                 <input  class="small-block input-style" 
                         placeholder="minutes" alt=""
                         type="date" 
-                        [(ngModel)]="creationDate"> 
+                        [ngModel]="creationDate | date:'yyyy-MM-dd'"> 
             </div>
         </div>
         <div>
@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="row buttons">
-            <button class="button secondary--button">Cancel</button>
+            <button class="button secondary--button" [routerLink]="['/courses']">Cancel</button>
             <button class="button active--button" (click)="save()">Save</button>
         </div>
     </div>

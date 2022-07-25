@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   public login():void {
     this.authService.login({ id: 777,"email": this.email, "password": this.password})
-    this.route.navigate(['/Courses'])
+    this.route.navigate(['/courses'])
   }
 
 }
