@@ -1,59 +1,64 @@
+import { map, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Card } from '../models/courses';
+import { Course, CourseResponse, CourseRequest } from '../models/courses';
+import { HttpClient } from '@angular/common/http'
+import { environment } from 'environments/environment';
+import { formatDate } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
-  private today = new Date()
-  private day: number = 86400000;
-  private data: Card[] = [
-    {
-      id: 1,
-      title: 'Componenets',
-      creationDate: this.today,
-      duration: 80,
-      description: 'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or colleges classes. Theyre published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.',
-      topRated: false,
-    },
-    {
-      id: 2,
-      title: 'Angular cores',
-      creationDate: new Date(this.today.getTime()- this.day * 20),
-      duration: 44,
-      description: 'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or colleges classes. Theyre published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.',
-      topRated: true,
-    },
-    {
-      id: 3,
-      title: 'Directives and Pipes',
-      creationDate: new Date(this.today.getTime()- this.day * 4),
-      duration: 214,
-      description: 'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or colleges classes. Theyre published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.',
-      topRated: false,
-    },
-  ];
+  private baseUrl: string = environment.baseUrl;
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    ) 
+  { }
 
-  public getList(): Card[] {
-    return this.data;
+  public getList(start: number, count: number, textFragment: string): Observable<Course[]>{
+    return this.http.get<CourseResponse[]>(`${this.baseUrl}courses`, 
+    { params: { start: start, count: count, textFragment: textFragment} })
+    .pipe(map(response => response.map(item => ({
+      id: item.id,
+      name: item.name,
+      date: new Date(item.date),
+      length: item.length,
+      description: item.description,
+      authors: item.authors,
+      isTopRated: item.isTopRated, 
+    }))));
   }
 
-  public create(course: Card): void {
-    this.data.push(course);
+  public getItemById(id: number): Observable<Course> {
+    return this.http.get<Course>(`${this.baseUrl}courses`, { params: { id: id} })
   }
 
-  public getItemById(id: number): Card | undefined {
-    return this.data.find(item => item.id === id);
+  public create(course: CourseRequest): Observable<any> {
+    return this.http.post(`${this.baseUrl}courses`, ({
+      name: course.name,
+      date: formatDate(course.date, 'yyyy-MM-dd', 'en_US'),
+      length: course.length,
+      description: course.description,
+      authors: course.authors,
+      isTopRated: course.isTopRated, 
+    }))
   }
 
-  public update(id: number, course: Card): void {
-    this.data.map(item => item.id === id ? course : item);
+  public update(id: number, course: Course): Observable<any> {
+    return this.http.put(`${this.baseUrl}courses/${id}`, ({
+      name: course.name,
+      date: formatDate(course.date, 'yyyy-MM-dd', 'en_US'),
+      length: course.length,
+      description: course.description,
+      authors: course.authors,
+      isTopRated: course.isTopRated, 
+    }))
   } 
 
-  public remove(id: number): void {
-    this.data = this.data.filter(item => item.id !== id);
+  public remove(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}courses/${id}`)
   }
 
 }

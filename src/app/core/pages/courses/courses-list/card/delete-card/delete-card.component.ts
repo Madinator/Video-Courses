@@ -1,4 +1,4 @@
-import { Card } from 'app/core/models/courses';
+import { Course } from 'app/core/models/courses';
 import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeleteCardComponent implements OnInit {
-  @Input() data: Card;
+  @Input() data: Course;
   @Output('close') closeEvent = new EventEmitter();
   @Output('delete') deleteEvent = new EventEmitter();
 
@@ -23,6 +23,7 @@ export class DeleteCardComponent implements OnInit {
 
   public delete(id: number): void {
     this.deleteEvent.emit(id)
+    this.close()
   }
 
 }

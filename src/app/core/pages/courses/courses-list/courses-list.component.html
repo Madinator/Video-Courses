@@ -3,17 +3,18 @@
         <input class="search-input base--input" 
             placeholder="Type to search" 
             [(ngModel)]="searchText" 
-            (input)="filterByName()"
-            alt="">
-        <button class="search-button active--button">Search</button>
+            alt=""
+            #searchInput
+            >
     </div>
     <div class="base-button">
         <app-base-button imgSrc="assets/add.png" name="Add course" [routerLink]="['/courses/new']"></app-base-button>
     </div>
-    <div class="list" *ngIf="data.length > 0; else noData">
-        <app-card *ngFor="let card of data | orderBy: 'creationDate' : 'desc'; trackBy: trackCoursesById; 
+    <div class="list" *ngIf="data; else noData">
+        <app-card *ngFor="let card of data; trackBy: trackCoursesById; 
             let last = last" [data]="card" [last]="last" 
             (delete)="deleteCourse($event)"
+            (loadMore)="loadMore()"
             >
         </app-card>
     </div>

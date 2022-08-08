@@ -8,7 +8,7 @@
             </div>
             <input class="name-input input-style" 
                     placeholder="Text input" alt=""
-                    [(ngModel)]="title"
+                    [(ngModel)]="name"
             >
         </div>
         <div>
@@ -30,7 +30,7 @@
                 <input  class="small-block input-style" 
                         placeholder="minutes" alt=""
                         type="date" 
-                        [ngModel]="creationDate | date:'yyyy-MM-dd'"> 
+                        [(ngModel)]="date"> 
             </div>
         </div>
         <div>
@@ -42,8 +42,8 @@
                 <input  class="duration-input input-style" 
                         placeholder="minutes" alt=""
                         type="number" 
-                        [(ngModel)]="duration"> 
-                <span class="minutes">{{ duration | duration}}</span>
+                        [(ngModel)]="length"> 
+                <span class="minutes">{{ length | duration}}</span>
             </div>
         </div>
         <div class="row buttons">

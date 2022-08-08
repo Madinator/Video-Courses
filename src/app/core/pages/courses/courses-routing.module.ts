@@ -12,15 +12,15 @@ const routes: Routes = [{
           loadChildren: () => import('app/core/pages/courses/courses-list/courses-list.module').then(m => m.CoursesListModule)
         },
         {
+          path: 'new',
+          loadChildren: () => import('app/core/pages/courses/add-edit/add-edit.module').then(m => m.AddEditModule),
+          data: { type: CourseActionType.Add } 
+        },
+        {
           path: ':id',
           loadChildren: () => import('app/core/pages/courses/add-edit/add-edit.module').then(m => m.AddEditModule),
           data: { type: CourseActionType.Edit }
         },
-        {
-          path: 'new',
-          loadChildren: () => import('app/core/pages/courses/add-edit/add-edit.module').then(m => m.AddEditModule),
-          data: { type: CourseActionType.Add } 
-        }
       ] 
   }];
 

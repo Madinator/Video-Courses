@@ -8,11 +8,16 @@ import { AuthService } from 'app/core/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  public login: string;
   constructor(private route: Router,
               private authService: AuthService) 
   { }
 
   ngOnInit(): void {
+    this.authService.GetUserInfo()
+    .subscribe(data => {
+      this.login = data.login;
+    } )
   }
 
   public logout(): void {

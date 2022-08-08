@@ -1,11 +1,21 @@
 export interface UserInfo {
-    id: number,
-    firstName: string,
-    lastName: string,
+    id: number;
+    token: string,
+    name: Name;
+    login: string;
+    password: string;
 }
 
-export interface User {
-    id: number,
-    email: string,
-    password: string
+interface Name {
+    first: string;
+    last: string;
+}
+
+export interface Login {
+    login: string;
+    password: string;
+}
+
+export interface Token {
+    token: string
 }

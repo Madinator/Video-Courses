@@ -1,31 +1,32 @@
+import { Login, Token } from 'app/core/models/user';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserInfo, User } from 'app/core/models/user'
+import { environment } from 'environments/environment';
 import { StorageService } from './storage.service';
+import { Router } from '@angular/router';
+import { UserInfo } from 'app/core/models/user'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private fakeUserInfo: UserInfo = {
-    id: 777,
-    firstName: 'Madi',
-    lastName: 'Super',
-  }
+  private baseUrl: string = environment.baseUrl;
+  private authUrl: string = this.baseUrl + 'auth/'
+  
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService,
+    private router: Router,
+  ) 
+  { }
 
-  private fakeUser: User = {
-    id: 777,
-    email: "Madinator@epam.com",
-    password: "12345678"
-  }
-
-  constructor(private storageService: StorageService) { }
-
-  public login(user : User): boolean {
-    if(this.fakeUser.id === user.id) {
-      this.storageService.setToken('pxguruq232mvkdjio343kvojxildnvdlvdv34')
-      return true;
-    }
-    return false;
+  public login(login: Login): void {
+    this.http.post<Token>(`${this.authUrl}login`, ({ login: login.login, password: login.password}))
+    .subscribe(data => {
+      this.storageService.setToken(data.token)
+      this.router.navigate(['/courses'])
+    });
   }
 
   public logout(): void {
@@ -33,13 +34,17 @@ export class AuthService {
   }
 
   public IsAuthenticated(): boolean {
-    if(this.storageService.getToken() === "pxguruq232mvkdjio343kvojxildnvdlvdv34") {
+    if(this.storageService.getToken()) {
       return true;
     }
     return false;
   }
 
-  public GetUserInfo(): UserInfo {
-    return this.fakeUserInfo;
+  public GetUserInfo(): Observable<UserInfo> {
+    return this.http.post<UserInfo>(`${this.authUrl}userinfo`, ({
+      token: this.storageService.getToken()
+    }))
   }
 }
+
+

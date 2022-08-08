@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AuthService } from 'app/core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { StorageService } from 'app/core/services/storage.service';
 
 @Component({
   templateUrl: './login.component.html',
@@ -11,16 +12,16 @@ export class LoginComponent implements OnInit {
   public email: string;
   public password: string;
 
-  constructor(private authService: AuthService,
-              private route: Router
+  constructor(
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
   }
 
   public login():void {
-    this.authService.login({ id: 777,"email": this.email, "password": this.password})
-    this.route.navigate(['/courses'])
+    this.authService.login({ login: this.email, password: this.password})
   }
 
 }
+
