@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="search-form">
+        <input class="search-input base--input" 
+            placeholder="Type to search" 
+            [(ngModel)]="searchText" 
+            alt=""
+            #searchInput
+            >
+    </div>
+    <div class="base-button">
+        <app-base-button imgSrc="assets/add.png" name="Add course" [routerLink]="['/courses/new']"></app-base-button>
+    </div>
+    <div class="list" *ngIf="data; else noData">
+        <app-card *ngFor="let card of data; trackBy: trackCoursesById; 
+            let last = last" [data]="card" [last]="last" 
+            (delete)="deleteCourse($event)"
+            (loadMore)="loadMore()"
+            >
+        </app-card>
+    </div>
+    <ng-template #noData>
+        <strong>No courses, Yet!</strong>
+    </ng-template>
+</div>

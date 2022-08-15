@@ -1,17 +1,18 @@
-import { CoreModule } from './core/core.module';
-
+import { AuthGuard } from './core/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadComponent: () => import('./core/pages/login/login.component').then(m => m.LoginComponent) },
-  { path: 'Courses', loadComponent: () => import('./core/pages/courses-list/courses-list.component').then(m => m.CoursesListComponent) },
-  { path: 'New-Course', loadChildren: () => import('./core/pages/courses-list/add-edit/add-edit.component').then(m => m.AddEditComponent) },
-  { path: '**', loadComponent: () => import('./core/pages/login/login.component').then(m => m.LoginComponent) }
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'login', loadChildren: () => import('app/core/pages/login/login.module').then(m => m.LoginModule) },
+  { path: 'courses', canActivate: [AuthGuard], canActivateChild: [AuthGuard], loadChildren: () => import('app/core/pages/courses/courses.module').then(m => m.CoursesModule)},
+  { path: 'not-found', loadChildren: () => import('./core/pages/not-found/not-found.module').then(m => m.NotFoundModule) },
+  { path: 'courses', loadChildren: () => import('./core/pages/courses/courses.module').then(m => m.CoursesModule) },
+  { path: '**', loadChildren: () => import('app/core/pages/not-found/not-found.module').then(m => m.NotFoundModule) }
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CoreModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

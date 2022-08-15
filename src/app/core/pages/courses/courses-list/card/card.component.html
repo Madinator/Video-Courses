@@ -1,0 +1,44 @@
+<div class="card" appCreationDate [creationDate]="data.date">
+    <div class="header">
+        <div class="row">
+            <h1 class="title">{{data?.name | uppercase}}</h1>
+            <img [ngClass]="data.isTopRated ? 'visible' : 'hidden'" class="star" src="assets/star.svg" alt="">
+        </div>
+        <div class="time">
+            <div>
+                <img src="assets/clock.svg" alt="">
+                <p>{{data.length | duration}}</p>
+            </div>
+            <div>
+                <img src="assets/calendar.svg" alt="">
+                <time class="date">{{data?.date | date: 'dd/MM/yyyy'}}</time>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p class="text">{{data?.description}}</p>
+        <div class="actions">
+            <app-base-button 
+                imgSrc="assets/edit.svg" 
+                class="edit" 
+                name="edit"
+                [routerLink]="['/courses/' + data?.id]">
+            </app-base-button>
+            <app-base-button 
+                imgSrc="assets/delete.svg" 
+                class="delete" 
+                name="delete"
+                (click)="showDeleteModal()">
+            </app-base-button>
+        </div>
+    </div>
+</div>
+
+<div class="loadMore" *ngIf="last">
+    <a class="loadMore-button" (click)="LoadMore()">Load more</a>
+</div>
+
+<app-modal *ngIf="isDeleteModalVisible">
+    <app-delete-card (close)="hideDeleteModal()" [data]="data" (delete)="delete($event)"></app-delete-card>
+</app-modal>
+

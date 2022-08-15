@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router, Event } from '@angular/router';
+import { NavigationEnd, Router, Event, ActivatedRoute } from '@angular/router';
+import { CourseActionType } from 'app/core/models/courses';
 
 @Component({
   selector: 'app-route',
@@ -11,7 +12,12 @@ export class RouteComponent implements OnInit {
     name: '',
     route: '',
   }];
-  constructor(private router: Router) { 
+  private actionType: CourseActionType;
+
+  constructor(
+    private router: Router,
+    private activedRoute: ActivatedRoute) 
+  { 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this.routerPath = this.router.url.split('/').filter(path => path !== "")
